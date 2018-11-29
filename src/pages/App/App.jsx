@@ -9,13 +9,14 @@ import userService from '../../utils/userService';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import Plant from '../../components/Plant/Plant';
-import Home from '../../components/Home/Home'
+import Home from '../../components/Home/Home';
+import ailmentService from '../../utils/ailmentService';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      ailments: []
     };
   }
 
@@ -35,18 +36,25 @@ class App extends Component {
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user});
+    ailmentService.getAll()
+    .then(ailments => {
+      this.setState({ailments});
+    })
   }
 
   render() {
     return (
     <div className="App">
-            <NavBar />
+            <NavBar 
+            user={this.state.user}
+            handleLogout={this.handleLogout}
+            />
         <Switch>
             <Route exact path='/plants' render= {() => 
             <Plant />
             } />
             <Route exact path='/' render={() =>
-            <Home />
+            <Home ailments={this.state.ailments}/>
             }/>
             <Route exact path='/signup' render={(props) =>
               <SignupPage

@@ -1,13 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './Ailment.css';
 
-class Ailment extends Component {
-  render() {
-    return (
+const Ailment = (props) => (
+  <div className="Ailment">
+    {props.ailments.map(ailment => 
+    <div className="Ail">
       <div>
-        <h1>Ailments</h1>
+        <img src={ailment.img} alt="{ailment.name}"></img>
       </div>
-    )
-  }
-}
+      <div>
+        {ailment.name}
+      </div>
+    </div>
+    )}
+  </div>
+)
 
 export default Ailment;
