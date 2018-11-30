@@ -5,10 +5,18 @@ function getAll() {
     .then(res => {
        return res.json();
     })
-    // Parameter destructuring!
     .then((ailments) => ailments);
   }
 
+  function getWithPlants(ailmentId) {
+      return fetch(BASE_URL + ailmentId)
+      .then(res => {
+          return res.json();
+      })
+      .then((ailment) => ailment);
+  }
+
 export default {
-    getAll
+    getAll,
+    getWithPlants
 }
