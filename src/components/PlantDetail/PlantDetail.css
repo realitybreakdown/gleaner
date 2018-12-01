@@ -1,0 +1,16 @@
+.PlantDetail {
+
+}
+
+.PlantD {
+    background-color: lightgray;
+    border-color: black;
+    border-style: solid;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.PlantImg {
+    border-color: black;
+    border-style: solid;
+}

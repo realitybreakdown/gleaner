@@ -11,7 +11,8 @@ class PlantForm extends Component {
             binomialName: '',
             location: '',
             uses: '',
-            img: ''
+            img: '',
+            edit: false
         }
     }
 
@@ -23,13 +24,12 @@ class PlantForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        delete this.state.plant;
+        delete this.state.edit;
         plantService.newPlant(this.state)
-        .then(res => {
-            res.json()
-            .then(plant => {
-                this.props.handleCreatePlant(plant);
-                this.props.history.push(`/plants/${plant._id}`);
-            });
+        .then(plant => {
+            this.props.handleCreatePlant(plant);
+            this.props.history.push(`/plants/${plant._id}`);
         });
     }
 
@@ -39,7 +39,7 @@ class PlantForm extends Component {
         console.log(this.state)
         return (
             <div>
-                <header className="header-footer">Plant</header>
+                <header className="header-footer">Add A New Plant</header>
                 {this.state.plants && !this.state.edit
                     ?
                     <PlantDetail plant={this.state.plant} toggleEdit={this.toggleEdit} />
@@ -68,7 +68,7 @@ class PlantForm extends Component {
                         <div className="form-group">
                             <div className="col-sm-12 text-center">
                                 <button className="btn btn-default" onClick={this.handleSubmit}>Create Plant</button>&nbsp;&nbsp;&nbsp;
-                        <Link to='/'>Cancel</Link>
+                            <Link to='/'>Cancel</Link>
                             </div>
                         </div>
                     </form>

@@ -4,6 +4,7 @@ const BASE_URL = '/api/plants/';
 
 function getPlantById(id) {
     return fetch(`/api/plants/${id}`)
+    .then(res => res.json());
 }
 
 function getAllPlants() {

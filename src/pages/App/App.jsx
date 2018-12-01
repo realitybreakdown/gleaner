@@ -32,7 +32,6 @@ class App extends Component {
     }));
   }
 
-
   handleLogout = () => {
     userService.logout();
     this.setState({user: null});
@@ -70,9 +69,9 @@ class App extends Component {
             <Route exact path='/plants' render= {() => 
               <PlantsPage plants={this.state.plants}/>
             } />
-            <Route exact path='/plants/:id' render= {({match, history}) => 
+            <Route exact path='/plants/:id' render= {(props) => 
               <PlantDetail
-                plant={this.state.plants.find(p => p._id === match.params.id)}
+                {...props}
                 ailments={this.state.ailments}
               />
             } />
@@ -99,9 +98,6 @@ class App extends Component {
                 handleCreatePlant={this.handleCreatePlant} 
                 history={history}
               />
-            }/>
-            <Route exact path='/plant/:id' render={() =>
-              <PlantDetail />
             }/>
         </Switch>
     </div>
