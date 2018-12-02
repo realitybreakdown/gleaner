@@ -3,13 +3,7 @@ import './PlantDetail.css';
 import plantService from '../../utils/plantService';
 
 class PlantDetail extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {plant: {}};
-
-    }
-
-    
+    state = {plant: {}};
 
     componentDidMount() {
         plantService.getPlantById(this.props.match.params.id)
@@ -27,7 +21,7 @@ class PlantDetail extends Component {
             <div className="PlantDetail">
                 <div className="PlantD">
                     <h1>{this.state.plant.commonName}</h1>
-                    <div className="PlantD">
+                    <div className="PlantImg">
                         <img src={this.state.plant.img} alt="img"></img>
                     </div>
                     <p>{this.state.plant.binominalName}</p>
@@ -35,7 +29,7 @@ class PlantDetail extends Component {
                     <p>{this.state.plant.uses}</p>
                     <button onClick={this.props.toggleEdit}>Edit</button>
                     <button onClick={this.props.addPlantToAil}>Add To Ailment</button>
-                    <button onClick={this.state.handleDeletePlant}>Delete</button>
+                    <button onClick={this.props.handleDeletePlant}>Delete</button>
                 </div>
             </div>
         );

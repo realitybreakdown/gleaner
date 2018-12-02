@@ -38,9 +38,10 @@ class App extends Component {
     var index = plants.indexOf(plant);
     plants.splice(index, 1)
     this.setState({
-      plants: plants
+      plants
     })
   }
+   
   
   handleLogout = () => {
     userService.logout();

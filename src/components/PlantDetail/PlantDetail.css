@@ -10,7 +10,17 @@
     margin: 0 auto;
 }
 
-.PlantImg {
+/* .PlantImg {
     border-color: black;
     border-style: solid;
+} */
+
+img {
+    border-color: black;
+    border-style: solid;
+    max-width: 400px;
+    max-height: 500px;
+    height: auto;
+    width: auto;
+    margin-right: 10px;
 }

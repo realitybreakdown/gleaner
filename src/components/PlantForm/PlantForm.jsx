@@ -8,12 +8,14 @@ class PlantForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            plant: {
             commonName: '',
             binomialName: '',
             location: '',
             uses: '',
             img: '',
             edit: false
+        }
         }
     }
 
@@ -26,7 +28,7 @@ class PlantForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         delete this.state.plant;
-        delete this.state.edit;
+        // delete this.state.plant.edit;
         plantService.newPlant(this.state)
         .then(plant => {
             this.props.handleCreatePlant(plant);
@@ -41,14 +43,14 @@ class PlantForm extends Component {
         return (
             <div>
                 <header className="header-footer">Add A New Plant</header>
-                {this.state.plants && !this.state.edit
+                {this.props.plant && !this.state.edit
                     ?
                     <PlantDetail plant={this.state.plant} toggleEdit={this.toggleEdit} />
                     :
                     <form className="form-horizontal">
                         <div className="form-group">
                             <div className="img-form">
-                                <input type="file" name="img" className="form-img" placeholder="Image" value={this.state.img} onChange={(e) => this.handleChange('img', e)} />
+                                <input name="img" className="form-control" placeholder="Image" value={this.state.img} onChange={(e) => this.handleChange('img', e)} />
                             </div>
                         </div>
                         <div className="form-group">
