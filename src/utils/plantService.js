@@ -15,6 +15,11 @@ function getAllPlants() {
   .then((plants) => plants);
 }
 
+function deletePlant(id) {
+  return fetch(`/api/plants/${id}`)
+  .then(res => res.json())
+}
+
 function newPlant(plant) {
     return fetch(BASE_URL, {
       method: 'POST',
@@ -34,5 +39,6 @@ function newPlant(plant) {
   export default {
     newPlant,
     getPlantById,
-    getAllPlants
+    getAllPlants,
+    deletePlant
   }

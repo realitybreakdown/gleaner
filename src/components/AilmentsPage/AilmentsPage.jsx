@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 // import PlantForm from '../PlantForm/PlantForm';
 import {Link} from 'react-router-dom';
-import Plant from '../Plant/Plant';
+import PlantAilPage from '../PlantAilPage/PlantAilPage';
 
 class AilmentsPage extends Component {
   render() {
     return (
     <div>
-        {this.props.match.params.id}
-        <Link to="/newplant">Add A New Plant</Link>
+        <PlantAilPage />
         <div>
-          <Plant />
+        <Link to="/newplant">Add A New Plant</Link>
         </div>
     </div>
     )

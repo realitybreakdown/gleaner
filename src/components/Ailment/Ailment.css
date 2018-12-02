@@ -9,8 +9,12 @@
     flex-direction: row;
 }
 
-.Ail {
+.Ail{
+    display: flex;
+    flex-flow: column;
     border-color: black;
     border-style: solid;
     margin-bottom: 20px;
+    align-items: stretch;
+    height: 95%;
 }

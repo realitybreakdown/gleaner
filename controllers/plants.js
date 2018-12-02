@@ -3,7 +3,8 @@ var Plant = require('../models/plant');
 module.exports = {
     getAllPlants,
     getPlantById,
-    createPlant
+    createPlant,
+    deletePlant
 };
 
 function getAllPlants(req, res) {
@@ -28,3 +29,10 @@ function createPlant(req, res) {
         res.json(plant);
     });
 }
+
+function deletePlant(req, res) {
+    Plant.findById(req.params.id, (err, plant) => {
+      plant.remove();
+      res.redirect('/plants');
+    });
+  }

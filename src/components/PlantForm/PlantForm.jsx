@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import plantService from '../../utils/plantService';
 import PlantDetail from '../PlantDetail/PlantDetail';
+import './PlantForm.css'
 
 class PlantForm extends Component {
     constructor(props) {
@@ -45,6 +46,11 @@ class PlantForm extends Component {
                     <PlantDetail plant={this.state.plant} toggleEdit={this.toggleEdit} />
                     :
                     <form className="form-horizontal">
+                        <div className="form-group">
+                            <div className="img-form">
+                                <input type="file" name="img" className="form-img" placeholder="Image" value={this.state.img} onChange={(e) => this.handleChange('img', e)} />
+                            </div>
+                        </div>
                         <div className="form-group">
                             <div className="col-sm-12">
                                 <input name="commonName" className="form-control" placeholder="Common Name" value={this.state.commonName} onChange={(e) => this.handleChange('commonName', e)} />

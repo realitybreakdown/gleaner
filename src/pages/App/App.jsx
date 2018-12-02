@@ -16,6 +16,7 @@ import plantService from '../../utils/plantService';
 // import NewPlantPage from '../NewPlantPage/NewPlantPage';
 import PlantForm from '../../components/PlantForm/PlantForm';
 import PlantDetail from '../../components/PlantDetail/PlantDetail';
+import PlantAilPage from '../../components/PlantAilPage/PlantAilPage';
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +33,15 @@ class App extends Component {
     }));
   }
 
+  handleDeletePlant = (plant) => {
+    var plants = this.state.plants.slice();
+    var index = plants.indexOf(plant);
+    plants.splice(index, 1)
+    this.setState({
+      plants: plants
+    })
+  }
+  
   handleLogout = () => {
     userService.logout();
     this.setState({user: null});
@@ -72,7 +82,9 @@ class App extends Component {
             <Route exact path='/plants/:id' render= {(props) => 
               <PlantDetail
                 {...props}
+                plants={this.state.plants}
                 ailments={this.state.ailments}
+                handleDeletePlant={this.handleDeletePlant}
               />
             } />
             <Route exact path='/' render={() =>
@@ -99,6 +111,9 @@ class App extends Component {
                 history={history}
               />
             }/>
+            <Route exact path="/ailments/:id/plants" render={(props) =>
+              <PlantAilPage {...props}/>
+            } />
         </Switch>
     </div>
     );

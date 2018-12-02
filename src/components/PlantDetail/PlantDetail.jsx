@@ -3,7 +3,13 @@ import './PlantDetail.css';
 import plantService from '../../utils/plantService';
 
 class PlantDetail extends Component {
-    state = {plant: {}};
+    constructor(props) {
+        super(props)
+        this.state = {plant: {}};
+
+    }
+
+    
 
     componentDidMount() {
         plantService.getPlantById(this.props.match.params.id)
@@ -11,6 +17,10 @@ class PlantDetail extends Component {
             this.setState({plant});
         });
     }
+
+    // handleDeletePlant = (e) => {
+    //     this.props.handleDeletePlant(this.props.plants);
+    // }
 
     render() {
         return(
@@ -24,6 +34,8 @@ class PlantDetail extends Component {
                     <p>{this.state.plant.location}</p>
                     <p>{this.state.plant.uses}</p>
                     <button onClick={this.props.toggleEdit}>Edit</button>
+                    <button onClick={this.props.addPlantToAil}>Add To Ailment</button>
+                    <button onClick={this.state.handleDeletePlant}>Delete</button>
                 </div>
             </div>
         );
