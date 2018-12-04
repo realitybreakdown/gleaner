@@ -43,7 +43,7 @@ function createComment(req, res) {
     Plant.findById(req.params.id).exec((err, plant) => {
             plant.comments.push({content: req.body.content});
             plant.save(err => {
-            res.redirect(`/plants/${plant.id}`);
+            res.json(plant);
         });
     });
 }

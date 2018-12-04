@@ -16,7 +16,6 @@ import plantService from '../../utils/plantService';
 import PlantForm from '../../components/PlantForm/PlantForm';
 import PlantDetail from '../../components/PlantDetail/PlantDetail';
 import AilmentPlantPage from '../../components/PlantAilPage/AilmentPlantPage';
-// import commentService from '../../utils/commentService';
 
 class App extends Component {
   constructor(props) {
@@ -55,15 +54,16 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
   
-  handleAddPlantToAil = (plantId, ailmentId) => {
-    plantService.addPlantToAilment(plantId, ailmentId)
-    .then(ailments => this.setState({ailments}));
+  handleAddPlantToAil = (updatedAil) => {
+    let ailments = this.state.ailments.filter(a => a.id !== updatedAil.id);
+    ailments.push(updatedAil);
+    this.setState({ailments});
   }
   
-  handleCommentAdd = (comment) => {
-    this.setState(curState => ({
-      comments: [...curState.comments, comment]
-    }));
+  handleCommentAdd = (updatedPlant) => {
+    let plants = this.state.plants.filter(p => p._id !== updatedPlant._id);
+    plants.push(updatedPlant);
+    this.setState({plants}); 
   }
 
   componentDidMount() {

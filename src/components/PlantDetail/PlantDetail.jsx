@@ -5,10 +5,8 @@ import CommentForm from '../CommentForm/CommentForm';
 import CommentList from '../CommentList/CommentList';
 
 class PlantDetail extends Component {
-  
-    state = {plant: {} }
+    state = {plant: {comments:[]} }
     
-
     componentDidMount() {
         plantService.getPlantById(this.props.match.params.id)
         .then(plant => {
@@ -22,34 +20,34 @@ class PlantDetail extends Component {
         this.props.history.push('/plants');
     }
 
-    // handleAddPlantToAil = (e) => {
-    //     this.props.handleAddPlantToAil(this.props.plants)
-    // }
-
-    handleCommentAdd = (e) => {
-        this.props.handleCommentAdd(this.props.comments);
-    }
-
     render() {
+        let plant = this.props.plants.find(p => p._id === this.props.match.params.id);
+        if (!plant) return null;
         // let assignedAilments = this.props.ailments.filter(a => a.plants.some(p => p._id === this.state.plant._id));
         // let unassignedAilments = this.props.ailments.filter(a => !a.plants.some(p => p._id === this.state.plant._id));
         return(
             <div className="PlantDetail">
                 <div className="PlantD">
-                    <h1>{this.state.plant.commonName}</h1>
+                    <h1>{plant.commonName}</h1>
                     <div>
                         <img className="PlantImg" src={this.state.plant.img} alt="img"></img>
                     </div>
-                    <p>{this.state.plant.binominalName}</p>
-                    <p>Binominal Name: {this.state.binomialName}</p>
-                    <p>Where to find it: {this.state.plant.location}</p>
-                    <p>How to Use: {this.state.plant.uses}</p>
-                    <button onClick={this.props.toggleEdit}>Edit</button>
-                    <button onClick={this.props.handleAddPlantToAil}>Add To Ailment</button>
-                    <button onClick={this.handleDeletePlant}>Delete</button>
+                    <p>Binominal Name: {plant.binomialName}</p>
+                    <p>Where to find it: {plant.location}</p>
+                    <p>How to Use: {plant.uses}</p>
+                    {/* <button onClick={this.props.toggleEdit}>Edit</button> */}
+                    <select onClick={this.handleAddPlantToAil} ailments={this.props.ailments}>
+                        <option>Add To An Ailment</option>
+                        {
+                            this.props.ailments.map((ailment) => {
+                                return (<option key={ailment.name} >{ailment.name}</option> )
+                            })
+                        }
+                    </select>
+                    <button className="deleteBtn" onClick={this.handleDeletePlant}>Delete</button>
                 </div>
-                <CommentForm handleCommentAdd={this.handleCommentAdd} />
-                <CommentList comments={this.state.plant.comments} />
+                <CommentForm plant={plant} handleCommentAdd={this.props.handleCommentAdd} />
+                <CommentList comments={plant.comments} />
                 <div>
                     {/* {assignedAilments} */}
                 </div>

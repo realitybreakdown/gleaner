@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PlantForm from '../PlantForm/PlantForm';
 import {Link} from 'react-router-dom';
 import AilmentPlantPage from '../PlantAilPage/AilmentPlantPage';
 

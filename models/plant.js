@@ -16,5 +16,4 @@ var PlantSchema = new Schema({
     comments: [commentSchema]
 });
 
-
-  module.exports = mongoose.model('Plant', PlantSchema);
+module.exports = mongoose.model('Plant', PlantSchema);

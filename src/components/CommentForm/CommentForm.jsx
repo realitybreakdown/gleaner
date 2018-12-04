@@ -1,6 +1,6 @@
 import React from 'react';
 import './CommentForm.css'
-// import commentService from '../../utils/commentService';
+import commentService from '../../utils/commentService';
 
 class CommentForm extends React.Component {
     constructor(props) {
@@ -12,7 +12,11 @@ class CommentForm extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.handleCommentAdd(this.state.content);
+        commentService.addComment(this.props.plant._id, this.state.content)
+        .then(plant => {
+            this.setState({content: ''});
+            this.props.handleCommentAdd(plant)
+        });
     };
 
     handleChange = e => {

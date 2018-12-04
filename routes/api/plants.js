@@ -8,6 +8,4 @@ router.post('/', plantCtrl.createPlant);
 router.delete('/:id', plantCtrl.deletePlant);
 router.post('/:id/comments', plantCtrl.createComment);
 
-
-
 module.exports = router;

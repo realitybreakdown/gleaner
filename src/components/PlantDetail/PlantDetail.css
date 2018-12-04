@@ -25,3 +25,7 @@
     margin-right: 10px;
 }
 
+.deleteBtn {
+    border-radius: 5px;
+    margin: 10px;
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 import './Plant.css';
 import {Link} from 'react-router-dom';
-// import broken from '../../img/noimagefound.png';
 
 const Plant = (props) => (
   <div className="Plant" plant={props.plant}>

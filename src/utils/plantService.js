@@ -1,5 +1,4 @@
 import tokenService from './tokenService';
-// import ailmentService from './ailmentService';
 const BASE_URL = '/api/plants/';
 
 
@@ -30,32 +29,24 @@ function deletePlant(id) {
 }
 
 function newPlant(plant) {
-    return fetch(BASE_URL, {
-      method: 'POST',
-      headers: new Headers({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + tokenService.getToken()
-      }),
-      body: JSON.stringify(plant)
-    })
-    .then(res => {
-      if (res.ok) return res.json();
-      throw new Error('Uh Oh! while creating a new plant');
-    })
-    .then((plant) => plant);
-  }
+  return fetch(BASE_URL, {
+    method: 'POST',
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }),
+    body: JSON.stringify(plant)
+  })
+  .then(res => {
+    if (res.ok) return res.json();
+    throw new Error('Uh Oh! while creating a new plant');
+  })
+  .then((plant) => plant);
+}
 
-  // function addPlantToAilment(plantId, ailmentId) {
-  //   var plant = getPlantById(plantId);
-  //   var ailment = ailmentService.getAilmentById(ailmentId);
-  //   var ailpl = []
-    
-  // }
-
-  export default {
-    newPlant,
-    getPlantById,
-    getAllPlants,
-    deletePlant,
-    // addPlantToAilment
-  }
+export default {
+  newPlant,
+  getPlantById,
+  getAllPlants,
+  deletePlant,
+}
