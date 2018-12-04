@@ -3,11 +3,12 @@ import './CommentList.css';
 
 const CommentList = (props) => (
     <div className="CommentList">
-        {props.comments.map(comment => (
+        {props.comment ? props.comments.map(comment => (
             <div>
                 {comment.content}
             </div>
-        ))}
+             
+        )) : null}
     </div>
 );
 

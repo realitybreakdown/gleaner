@@ -43,12 +43,11 @@ class PlantDetail extends Component {
                     <p>{this.state.plant.binominalName}</p>
                     <p>Binominal Name: {this.state.binomialName}</p>
                     <p>Where to find it: {this.state.plant.location}</p>
-                    <p>Uses: {this.state.plant.uses}</p>
+                    <p>How to Use: {this.state.plant.uses}</p>
                     <button onClick={this.props.toggleEdit}>Edit</button>
                     <button onClick={this.props.handleAddPlantToAil}>Add To Ailment</button>
                     <button onClick={this.handleDeletePlant}>Delete</button>
                 </div>
-                
                 <CommentForm handleCommentAdd={this.handleCommentAdd} />
                 <CommentList comments={this.state.plant.comments} />
                 <div>
