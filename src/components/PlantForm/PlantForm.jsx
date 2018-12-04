@@ -39,18 +39,17 @@ class PlantForm extends Component {
     toggleEdit = () => this.setState({ edit: !this.state.edit })
 
     render() {
-        console.log(this.state)
         return (
             <div>
-                <header className="header-footer">Add A New Plant</header>
+                <h1 className="header-footer">Add A New Plant</h1>
                 {this.props.plant && !this.state.edit
                     ?
                     <PlantDetail plant={this.state.plant} toggleEdit={this.toggleEdit} />
                     :
                     <form className="form-horizontal">
                         <div className="form-group">
-                            <div className="img-form">
-                                <input name="img" className="form-control" placeholder="Image" value={this.state.img} onChange={(e) => this.handleChange('img', e)} />
+                            <div className="col-sm-12">
+                                <input name="img" className="form-control" placeholder="Imgur URL" value={this.state.img} onChange={(e) => this.handleChange('img', e)} />
                             </div>
                         </div>
                         <div className="form-group">

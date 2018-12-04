@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import './PlantAilPage.css'
+import './AilmentPlantPage.css'
 
-class PlantAilPage extends Component {
+class AilmentPlantPage extends Component {
   render() {
     return (
       <div className="PlantAilPage">
@@ -11,4 +11,4 @@ class PlantAilPage extends Component {
   }
 }
 
-export default PlantAilPage;
+export default AilmentPlantPage;

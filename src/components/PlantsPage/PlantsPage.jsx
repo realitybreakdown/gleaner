@@ -6,7 +6,7 @@ import './PlantsPage.css'
 class PlantsPage extends Component {
   render() {
     return (
-      <div>
+      <div className="PlantsPage">
         <h1>Plants</h1>
         <div className="PlantOn">
           <Plant plants={this.props.plants}/>

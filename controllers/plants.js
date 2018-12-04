@@ -4,7 +4,8 @@ module.exports = {
     getAllPlants,
     getPlantById,
     createPlant,
-    deletePlant
+    deletePlant,
+    createComment
 };
 
 function getAllPlants(req, res) {
@@ -30,9 +31,20 @@ function createPlant(req, res) {
     });
 }
 
+
 function deletePlant(req, res) {
     Plant.findById(req.params.id, (err, plant) => {
       plant.remove();
-      res.redirect('/plants');
+      res.json({msg: 'deleted'});
     });
-  }
+}
+
+function createComment(req, res) {
+    Plant.findById(req.params.id).exec((err, plant) => {
+            plant.comments.push({content: req.body.content});
+            plant.save(err => {
+            res.redirect(`/plants/${plant.id}`);
+        });
+    });
+}
+

@@ -1,0 +1,17 @@
+.CommentForm {
+    margin: 20px;
+}
+
+.CommentBtn {
+    margin: 10px;
+}
+
+.CommentInput {
+
+}
+
+.CommentFormIn {
+    width: 700px;
+    height: 50px;
+    border-color: lightblue;
+}

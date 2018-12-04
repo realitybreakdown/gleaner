@@ -8,6 +8,11 @@ function getAll() {
     .then((ailments) => ailments);
   }
 
+  function getAilmentById(id) {
+    return fetch(`/api/ailments/${id}`)
+    .then(res => res.json());
+}
+
   function getWithPlants(ailmentId) {
       return fetch(BASE_URL + ailmentId)
       .then(res => {
@@ -18,5 +23,6 @@ function getAll() {
 
 export default {
     getAll,
-    getWithPlants
+    getWithPlants,
+    getAilmentById
 }

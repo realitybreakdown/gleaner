@@ -1,5 +1,5 @@
 .PlantDetail {
-
+    
 }
 
 .PlantD {
@@ -15,7 +15,7 @@
     border-style: solid;
 } */
 
-img {
+.PlantImg {
     border-color: black;
     border-style: solid;
     max-width: 400px;
@@ -24,3 +24,4 @@ img {
     width: auto;
     margin-right: 10px;
 }
+

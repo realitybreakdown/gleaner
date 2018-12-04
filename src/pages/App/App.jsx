@@ -13,10 +13,10 @@ import Home from '../../components/Home/Home';
 import ailmentService from '../../utils/ailmentService';
 import AilmentsPage from '../../components/AilmentsPage/AilmentsPage';
 import plantService from '../../utils/plantService';
-// import NewPlantPage from '../NewPlantPage/NewPlantPage';
 import PlantForm from '../../components/PlantForm/PlantForm';
 import PlantDetail from '../../components/PlantDetail/PlantDetail';
-import PlantAilPage from '../../components/PlantAilPage/PlantAilPage';
+import AilmentPlantPage from '../../components/PlantAilPage/AilmentPlantPage';
+// import commentService from '../../utils/commentService';
 
 class App extends Component {
   constructor(props) {
@@ -33,29 +33,39 @@ class App extends Component {
     }));
   }
 
-  handleDeletePlant = (plant) => {
-    var plants = this.state.plants.slice();
-    var index = plants.indexOf(plant);
-    plants.splice(index, 1)
+  
+  handleDeletePlant = (plantId) => {
+    plantService.deletePlant(plantId);
+    var plants = this.state.plants.filter(p => p._id !== plantId);
     this.setState({
       plants
-    })
+    });
   }
-   
   
   handleLogout = () => {
     userService.logout();
     this.setState({user: null});
   }
-
+  
   handleSignup = () => {
     this.setState({user: userService.getUser()});
   }
-
+  
   handleLogin = () => {
     this.setState({user: userService.getUser()});
   }
   
+  handleAddPlantToAil = (plantId, ailmentId) => {
+    plantService.addPlantToAilment(plantId, ailmentId)
+    .then(ailments => this.setState({ailments}));
+  }
+  
+  handleCommentAdd = (comment) => {
+    this.setState(curState => ({
+      comments: [...curState.comments, comment]
+    }));
+  }
+
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user});
@@ -86,6 +96,8 @@ class App extends Component {
                 plants={this.state.plants}
                 ailments={this.state.ailments}
                 handleDeletePlant={this.handleDeletePlant}
+                handleAddPlantToAil={this.handleAddPlantToAil}
+                handleCommentAdd={this.handleCommentAdd}
               />
             } />
             <Route exact path='/' render={() =>
@@ -113,7 +125,7 @@ class App extends Component {
               />
             }/>
             <Route exact path="/ailments/:id/plants" render={(props) =>
-              <PlantAilPage {...props}/>
+              <AilmentPlantPage {...props}/>
             } />
         </Switch>
     </div>

@@ -1,6 +1,6 @@
 .Plant {
     width: 900px;
-    height: 1300px;
+    height: auto;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -9,9 +9,33 @@
     flex-direction: row;
 }
 
-
-.Pl { 
-    background-color: lightgray;
+.Pl{
+    display: flex;
+    flex-flow: column;
     border-color: black;
     border-style: solid;
+    margin-bottom: 20px;
+    align-items: stretch;
+    height: 95%;
+    background-color: lightgray;
+}
+
+.PlantImgList {
+    border-color: black;
+    border-style: solid;
+    max-width: 170px;
+    min-height: 170px;
+    height: auto;
+    width: auto;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.PlImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 200px;
+    margin-left: 10px;
 }
