@@ -1,3 +1,16 @@
 .CommentList {
     
 }
+
+.CommentBox {
+    display: flex;
+    flex-direction: row;
+    border-color: lightblue;
+    border-style: solid;
+    width: 700px;
+    justify-content: space-around;
+    margin: auto;
+    padding: 5px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}

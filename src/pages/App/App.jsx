@@ -36,9 +36,7 @@ class App extends Component {
   handleDeletePlant = (plantId) => {
     plantService.deletePlant(plantId);
     var plants = this.state.plants.filter(p => p._id !== plantId);
-    this.setState({
-      plants
-    });
+    this.setState({plants});
   }
   
   handleLogout = () => {
@@ -54,10 +52,13 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
   
-  handleAddPlantToAil = (updatedAil) => {
-    let ailments = this.state.ailments.filter(a => a.id !== updatedAil.id);
-    ailments.push(updatedAil);
-    this.setState({ailments});
+  handleAddPlantToAil = (plantId, ailmentId) => {
+    let plant = plantService.getPlantById(plantId)
+    let ailment = ailmentService.getAilmentById(ailmentId)
+    ailment.push(plant)
+    .then(ailment => {
+      this.setState({ailment})
+    })
   }
   
   handleCommentAdd = (updatedPlant) => {
@@ -89,7 +90,7 @@ class App extends Component {
         <Switch>
             <Route exact path='/plants' render= {() => 
               <PlantsPage plants={this.state.plants}/>
-            } />
+            }/>
             <Route exact path='/plants/:id' render= {(props) => 
               <PlantDetail
                 {...props}
@@ -99,7 +100,7 @@ class App extends Component {
                 handleAddPlantToAil={this.handleAddPlantToAil}
                 handleCommentAdd={this.handleCommentAdd}
               />
-            } />
+            }/>
             <Route exact path='/' render={() =>
               <Home ailments={this.state.ailments}/>
             }/>
@@ -126,7 +127,7 @@ class App extends Component {
             }/>
             <Route exact path="/ailments/:id/plants" render={(props) =>
               <AilmentPlantPage {...props}/>
-            } />
+            }/>
         </Switch>
     </div>
     );

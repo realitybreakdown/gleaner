@@ -21,13 +21,13 @@ function getWithPlants(ailmentId) {
     .then((ailment) => ailment);
 }
 
-function addPlantToAilment(ailmentId) {
-    return fetch(`/api/ailments/${ailmentId}`, {
+function addPlantToAilment(id) {
+    return fetch(`/api/ailments/${id}/plant`, {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
-      body: JSON.stringify({ailmentId})
+      body: JSON.stringify({id})
     })
     .then(res => {
       if (res.ok) return res.json();

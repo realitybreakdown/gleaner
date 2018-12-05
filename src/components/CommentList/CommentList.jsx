@@ -4,7 +4,7 @@ import './CommentList.css';
 const CommentList = (props) => (
     <div className="CommentList">
         {props.comments.map(comment => (
-            <div>
+            <div className="CommentBox">
                 {comment.content}
             </div>  
         ))}
