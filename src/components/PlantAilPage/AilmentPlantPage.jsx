@@ -25,10 +25,10 @@ class AilmentPlantPage extends Component {
         {this.state.ailment.plants && this.state.ailment.plants.map(plant =>
         <Link to={`/plants/${plant._id}`}>
           <div className="PlAil"> 
-            <div className="PlImg">
+            <div className="PlAilImg">
                 <img src={
                   plant.img ? plant.img : '/img/noimagefound.png'
-                  } alt="img" className='PlantImgList'>
+                  } alt="img" className='AilPlantImgList'>
                 </img> 
             </div>
             <div >
@@ -37,6 +37,9 @@ class AilmentPlantPage extends Component {
           </div>
         </Link>
           )}
+          <div className="PlLink">
+            <Link to="/newplant">Add A New Plant</Link>
+          </div>
       </div>
     )
   }
