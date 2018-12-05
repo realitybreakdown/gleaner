@@ -5,7 +5,7 @@
 ## Description 
 I have created Gleaner to build an API of plants and their medicinal uses. I have known many people who love to use plants as medicine and I was thinking of them while I built this. 
 
-<img src="https://i.imgur.com/wCGW7do.png">
+<img src="https://i.imgur.com/zWuT0DA.png">
 <img src="https://i.imgur.com/LfcnrgE.png">
 
 
