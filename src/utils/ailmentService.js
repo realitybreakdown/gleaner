@@ -33,7 +33,6 @@ function addPlantToAilment(plant, id) {
       if (res.ok) return res.json();
       throw new Error('No Plant Added');
     })
-    // .then(ailment => console.log(ailment))
   }
 
 export default {
