@@ -25,5 +25,7 @@ I have created Gleaner to build an API of plants and their medicinal uses. I hav
 https://gleaner.herokuapp.com/
 
 ## Next Steps 
-I'd like to add a coulple of more features with authorization. For example I'd like a user to only delete a plant made by them and which user made what comment. I'd like to make the API public once more plants are added. I would like to give plants more than one photo that a user could scroll through.
+* I'd like to add a coulple of more features with authorization. For example I'd like a user to only delete a plant made by them and which      user made what comment. 
+* I'd like to make the API public once more plants are added. 
+* I would like to give plants more than one photo that a user could scroll through.
 
