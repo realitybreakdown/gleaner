@@ -7,6 +7,7 @@ I have created Gleaner to build an API of plants and their medicinal uses. I hav
 
 <img src="https://i.imgur.com/zWuT0DA.png">
 <img src="https://i.imgur.com/LfcnrgE.png">
+<img src="https://i.imgur.com/wgIyOfD.png">
 
 
 ## Technologies
