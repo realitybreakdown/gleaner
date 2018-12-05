@@ -16,21 +16,17 @@ function getAll(req, res) {
 
 function getWithPlants(req, res) {
     Ailment.findById(req.params.id)
+    .populate('plants')
     .then(ailment => {
         res.json(ailment)
     });
 }
 
 function addPlantToAil(req, res) {
-    Ailment.findById(req.params.ailmentId, (err, ailment) => {
-      ailment.plant.push(req.params.plantId);
-      ailment.save(() => {
-        Plant.findById(req.params.plantId, (err, plant) => {
-          plant.ailment.push(req.params.ailmentId);
-          plant.save(() => {
-            res.redirect(`/ailment/${ailment.id}`);
-          });
-        });
-      });
+    console.log(req.params.id, req.body)
+    Ailment.findById(req.params.id, (err, ailment) => {
+      ailment.plants.push(req.body);
+      ailment.save()
+        .then(ailment => res.json(ailment))
     });
 }

@@ -6,9 +6,12 @@ class AilmentsPage extends Component {
   render() {
     return (
     <div>
-        <AilmentPlantPage />
+        <AilmentPlantPage 
+          plants={this.props.plants} 
+          ailments={this.props.ailments}
+        />
         <div>
-        <Link to="/newplant">Add A New Plant</Link>
+          <Link to="/newplant">Add A New Plant</Link>
         </div>
     </div>
     )

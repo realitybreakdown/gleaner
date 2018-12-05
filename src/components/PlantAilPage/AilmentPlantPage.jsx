@@ -1,14 +1,45 @@
 import React, {Component} from 'react';
-import './AilmentPlantPage.css'
+import {withRouter} from 'react-router-dom';
+import './AilmentPlantPage.css';
+import ailmentService from '../../utils/ailmentService';
+import {Link} from 'react-router-dom';
+
 
 class AilmentPlantPage extends Component {
+  state = {
+    ailment: {}
+  }
+
+  componentDidMount() {
+    ailmentService.getAilmentById(this.props.match.params.id)
+    .then(ailment => 
+      this.setState({ailment}))
+  }
+
   render() {
     return (
       <div className="PlantAilPage">
-        <h1>HI</h1>
+        <div className="AilmentTitle">
+          <h1>{this.state.ailment.name}</h1>
+        </div>
+        {this.state.ailment.plants && this.state.ailment.plants.map(plant =>
+        <Link to={`/plants/${plant._id}`}>
+          <div className="PlAil"> 
+            <div className="PlImg">
+                <img src={
+                  plant.img ? plant.img : '/img/noimagefound.png'
+                  } alt="img" className='PlantImgList'>
+                </img> 
+            </div>
+            <div >
+              {plant.commonName}
+            </div>
+          </div>
+        </Link>
+          )}
       </div>
     )
   }
 }
 
-export default AilmentPlantPage;
+export default withRouter(AilmentPlantPage);

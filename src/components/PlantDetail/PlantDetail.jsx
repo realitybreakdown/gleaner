@@ -20,11 +20,9 @@ class PlantDetail extends Component {
         this.props.history.push('/plants');
     }
 
-    // handleChange = (e) => {
-    //     this.setState({
-    //       ailment: e.target.ailment
-    //     });
-    // }
+    handleChange = (e, plant) => {
+        this.props.handleAddPlantToAil(plant, e.target.value)
+    }
 
     render() {
         let plant = this.props.plants.find(p => p._id === this.props.match.params.id);
@@ -41,17 +39,16 @@ class PlantDetail extends Component {
                     <p>Binominal Name: {plant.binomialName}</p>
                     <p>Where to find it: {plant.location}</p>
                     <p>How to Use: {plant.uses}</p>
-                    {/* <select onChange={(e) => this.handleChange(e)} value={e.target.ailment}> */}
-                    <select>
+                    <select onChange={(e) => this.handleChange(e, plant)}>
                         <option>Add To An Ailment</option>
                         {
                             this.props.ailments.map((ailment) => {
-                                return (<option>{ailment.name}</option> )
+                                return (<option value={ailment._id}>{ailment.name}</option> )
                             })
                         }
                     </select>
                     <button className="deleteBtn" onClick={this.handleDeletePlant}>Delete</button>
-                </div>
+            </div>
                 <CommentList comments={plant.comments} />
                 <CommentForm plant={plant} handleCommentAdd={this.props.handleCommentAdd} />
                 <div>

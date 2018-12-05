@@ -52,12 +52,14 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
   
-  handleAddPlantToAil = (plantId, ailmentId) => {
-    let plant = plantService.getPlantById(plantId)
-    let ailment = ailmentService.getAilmentById(ailmentId)
-    ailment.push(plant)
-    .then(ailment => {
-      this.setState({ailment})
+  handleAddPlantToAil = (plant, ailmentId) => {
+    ailmentService.addPlantToAilment(plant, ailmentId)
+    .then((ailment) => {
+      ailmentService.getAll()
+    .then(ailments => {
+      this.setState({ailments});
+      this.props.history.push(`/ailments/${ailment._id}`)
+    });
     })
   }
   
@@ -117,7 +119,10 @@ class App extends Component {
               />
             }/>
             <Route exact path='/ailments/:id' render={(props) =>
-              <AilmentsPage {...props} />
+              <AilmentsPage  
+                plants={this.state.plants}
+                ailments={this.state.ailments}
+              />
             }/>
             <Route exact path='/newplant' render={({history}) =>
               <PlantForm
@@ -125,8 +130,11 @@ class App extends Component {
                 history={history}
               />
             }/>
-            <Route exact path="/ailments/:id/plants" render={(props) =>
-              <AilmentPlantPage {...props}/>
+            <Route exact path="/ailments/:id/plants" render={() =>
+              <AilmentPlantPage
+                plants={this.state.plants}
+                ailments={this.state.ailments}
+              />
             }/>
         </Switch>
     </div>

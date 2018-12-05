@@ -21,19 +21,19 @@ function getWithPlants(ailmentId) {
     .then((ailment) => ailment);
 }
 
-function addPlantToAilment(id) {
+function addPlantToAilment(plant, id) {
     return fetch(`/api/ailments/${id}/plant`, {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
-      body: JSON.stringify({id})
+      body: JSON.stringify(plant)
     })
     .then(res => {
       if (res.ok) return res.json();
       throw new Error('No Plant Added');
     })
-    .then(ailment => ailment);
+    // .then(ailment => console.log(ailment))
   }
 
 export default {
